@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace MongoUtility
         /// <returns></returns>
         public IList<T> Get(int startRowIndex, int maximumRows)
         {
-            FilterDefinition<T> filter = "{\"IsDeleted\": false}";
+            FilterDefinition<T> filter = new BsonDocument();
             SortDefinition<T> sort = "{\"_id\": -1}";
             List<T> li = collection.Find(filter).Sort(sort).Skip(startRowIndex).Limit(maximumRows).ToList();
             return li;
@@ -64,7 +65,7 @@ namespace MongoUtility
         /// <returns></returns>
         public async Task<IList<T>> GetAsync(int startRowIndex, int maximumRows)
         {
-            FilterDefinition<T> filter = "{\"IsDeleted\": false}";
+            FilterDefinition<T> filter = new BsonDocument();
             SortDefinition<T> sort = "{\"_id\": -1}";
             List<T> li = await collection.Find(filter).Sort(sort).Skip(startRowIndex).Limit(maximumRows).ToListAsync();
             return li;
