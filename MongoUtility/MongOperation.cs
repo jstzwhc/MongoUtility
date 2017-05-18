@@ -85,7 +85,7 @@ namespace MongoUtility
             return li;
         }
         /// <summary>
-        /// 异步按条件获取列表
+        /// 按条件异步获取列表
         /// </summary>
         /// <param name="condition">条件</param>
         /// <param name="startRowIndex">首记录索引</param>
@@ -125,7 +125,7 @@ namespace MongoUtility
             return li;
         }
         /// <summary>
-        /// 异步按条件获取列表
+        /// 按条件异步获取列表
         /// </summary>
         /// <param name="curPage">当前页号</param>
         /// <param name="recordsPerPage">每页记录数</param>
